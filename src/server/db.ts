@@ -1,4 +1,4 @@
-import 'server only'
+import 'server-only'
 import { MongoClient } from 'mongodb'
 
 const client = new MongoClient('mongodb://localhost:27017')
