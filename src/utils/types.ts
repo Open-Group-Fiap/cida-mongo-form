@@ -2,8 +2,8 @@ import { z } from 'zod'
 
 export const userSchema = z.object({
     nome: z.string(),
-    tipo_doc: z.string().length(4),
-    num_doc: z.string(),
+    tipoDoc: z.string().length(4),
+    numDoc: z.string(),
     telefone: z.string(),
     criadoEm: z.date(),
     status: z.enum(['ativo', 'inativo']),
