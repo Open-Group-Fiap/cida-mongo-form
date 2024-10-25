@@ -1,3 +1,4 @@
+import DeleteUserButton from '@/components/DeleteUserButton'
 import db from '@/server/db'
 import { User } from '@/utils/types'
 import { ObjectId } from 'mongodb'
@@ -9,7 +10,6 @@ export default async function Page() {
         .collection('users')
         .find()
         .toArray()) as UserWithId[]
-    console.log(users)
     return (
         <div className="flex flex-col items-center justify-center gap-4 p-4">
             <h1 className="text-center text-2xl font-bold">
@@ -81,12 +81,9 @@ export default async function Page() {
                                     Editar
                                 </Link>
                                 <span className="mx-2">|</span>
-                                <Link
-                                    href={`/edit/user/${user._id}`}
-                                    className="text-red-500 hover:underline"
-                                >
-                                    Excluir
-                                </Link>
+                                <DeleteUserButton
+                                    userId={user._id.toString()}
+                                />
                             </td>
                         </tr>
                     ))}
