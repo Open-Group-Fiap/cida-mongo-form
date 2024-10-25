@@ -9,8 +9,7 @@ export default function DeleteUserButton({ userId }: { userId: string }) {
         <span
             className="text-red-500 hover:underline"
             onClick={() => {
-                const deleteUserWithId = deleteUserAction.bind(null, userId)
-                deleteUserWithId()
+                deleteUserAction(userId)
                 router.refresh()
             }}
         >
