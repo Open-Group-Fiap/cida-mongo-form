@@ -1,18 +1,22 @@
 'use client'
 import { createUserAction } from '@/server/actions'
+import { redirect, useRouter } from 'next/navigation'
 
 export default function UserForm() {
+    const router = useRouter()
     return (
         <div className="flex flex-col items-center justify-center gap-4 p-4">
             <form
                 onSubmit={async (e) => {
                     e.preventDefault()
                     const form = new FormData(e.target as HTMLFormElement)
-
                     try {
                         await createUserAction(form)
+                        router.push('/list/user')
                     } catch (error) {
-                        alert(error)
+                        if (error instanceof Error) {
+                            alert(error.message)
+                        }
                     }
                 }}
                 className="grid grid-cols-2 items-center justify-center gap-6 rounded-lg border-2 border-gray-200 p-4 even:w-1/4"
