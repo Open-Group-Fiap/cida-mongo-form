@@ -1,10 +1,8 @@
 import DeleteUserButton from '@/components/DeleteUserButton'
 import db from '@/server/db'
-import { User } from '@/utils/types'
-import { ObjectId } from 'mongodb'
+import {  UserWithId } from '@/utils/types'
 import Link from 'next/link'
 
-type UserWithId = User & { _id: ObjectId }
 export default async function Page() {
     const users = (await db
         .collection('users')
