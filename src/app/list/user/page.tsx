@@ -34,11 +34,11 @@ export default async function Page() {
                         <th className="border-b px-4 py-2">Ações</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody className="divide-y divide-gray-200 bg-white">
                     {users.map((user) => (
                         <tr
                             key={user._id.toString()}
-                            className="border-b border-gray-500 transition-colors duration-300 hover:bg-gray-200"
+                            className="border-b border-gray-500 transition-all duration-200 odd:bg-gray-300 hover:bg-gray-600 hover:text-white"
                         >
                             <td className="border-b px-4 py-2">
                                 {user._id.toString()}
@@ -64,8 +64,8 @@ export default async function Page() {
                             </td>
                             <td className="border-b px-4 py-2">
                                 <span
-                                    className={`rounded px-2 py-1 text-xs font-medium ${user.status === 'ativo'
-                                            ? 'text-green-700'
+                                    className={`rounded px-2 py-1 text-xs font-bold ${user.status === 'ativo'
+                                            ? 'text-green-500'
                                             : 'text-red-700'
                                         }`}
                                 >

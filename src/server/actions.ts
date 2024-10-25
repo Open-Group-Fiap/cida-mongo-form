@@ -40,5 +40,4 @@ export async function createUserAction(form: FormData) {
 
 export async function deleteUserAction(id: string) {
     db.collection('users').deleteOne({ _id: new ObjectId(id) })
-
 }
