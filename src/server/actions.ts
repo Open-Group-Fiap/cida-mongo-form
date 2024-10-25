@@ -1,8 +1,8 @@
+'use server'
 import { User, userSchema } from '@/utils/types'
 import db from './db'
 
-export async function createUser(form: FormData) {
-    'use server'
+export async function createUserAction(form: FormData) {
     const now = new Date()
     const hash = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(form.get('senha') as string))
     const hashString = Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2, '0')).join('')

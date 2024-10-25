@@ -1,8 +1,20 @@
-import { createUser } from '@/server/actions'
+'use client'
+import { createUserAction } from '@/server/actions'
 
-export default async function UserForm() {
+export default function UserForm() {
     return (
-        <form action={createUser}>
+        <form
+            onSubmit={async (e) => {
+                e.preventDefault()
+                const form = new FormData(e.target as HTMLFormElement)
+
+                try {
+                    await createUserAction(form)
+                } catch (error) {
+                    alert(error)
+                }
+            }}
+        >
             <input type="text" name="nome" id="nome" placeholder="Nome" />
             <select name="tipo_doc" id="tipo_doc">
                 <option value="CPF">CPF</option>
