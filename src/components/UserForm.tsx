@@ -1,11 +1,8 @@
 import { createUser } from '@/server/actions'
-import { User } from '@/utils/types'
 
 export default async function UserForm() {
     return (
         <form action={createUser}>
-
-            
             <input type="text" name="nome" id="nome" placeholder="Nome" />
             <select name="tipo_doc" id="tipo_doc">
                 <option value="CPF">CPF</option>

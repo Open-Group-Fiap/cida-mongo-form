@@ -2,10 +2,10 @@ import { z } from 'zod'
 
 export const userSchema = z.object({
     nome: z.string(),
-    tipoDoc: z.string().length(4),
+    tipoDoc: z.string().min(3).max(3),
     numDoc: z.string(),
     telefone: z.string(),
-    criadoEm: z.date(),
+    criadoEm: z.string().datetime(),
     status: z.enum(['ativo', 'inativo']),
     auth: z.object({
         email: z.string().email(),
