@@ -1,13 +1,9 @@
-import UserForm from '@/components/UserForm'
-import db from '@/server/db'
-import { User } from '@/utils/types'
-export default async function Home() {
+import Link from "next/link";
+
+export default function Home() {
     return (
-        <main>
-            <h1 className="text-center text-6xl font-bold underline">
-                Cida - Consulting Insights with Deep Analysis
-            </h1>
-            <UserForm />
-        </main>
+        <div>
+            <Link href="/create/user">Criar usuário</Link>
+        </div>
     )
 }

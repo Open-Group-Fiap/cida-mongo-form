@@ -2,7 +2,7 @@ import { z } from 'zod'
 
 export const userSchema = z.object({
     nome: z.string(),
-    tipoDoc: z.string().min(3).max(3),
+    tipoDoc: z.enum(['CPF', 'CNPJ']),
     numDoc: z.string(),
     telefone: z.string(),
     criadoEm: z.string().datetime(),
