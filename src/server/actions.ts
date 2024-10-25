@@ -78,3 +78,8 @@ export async function editUserAction(id: string, form: FormData) {
 export async function deleteUserAction(id: string) {
     db.collection('users').deleteOne({ _id: new ObjectId(id) })
 }
+
+export async function createInsightAction(form: FormData) {
+}
+
+export async function editInsightAction(id: string, form: FormData) {}

@@ -1,3 +1,4 @@
+import { ObjectId } from 'mongodb'
 import { z } from 'zod'
 
 export const userSchema = z.object({
@@ -13,23 +14,24 @@ export const userSchema = z.object({
     }),
 })
 export const resumoSchema = z.object({
-    dataCriacao: z.date(),
+    dataCriacao: z.string().datetime(),
     descricao: z.string(),
 })
 export const arquivoSchema = z.object({
-    usuario: z.string(),
     nome: z.string(),
     extensao: z.string(),
     tamanho: z.number(),
-    dataUpload: z.date(),
+    dataUpload: z.string().datetime(),
     url: z.string(),
 })
 export const insightSchema = z.object({
     usuario: z.string(),
-    dataCriacao: z.date(),
+    dataCriacao: z.string().datetime(),
     descricao: z.string(),
     resumo: resumoSchema,
     arquivos: z.array(arquivoSchema),
 })
 export type Insight = z.infer<typeof insightSchema>
 export type User = z.infer<typeof userSchema>
+export type UserWithId = User & { _id: ObjectId }
+export type InsightWithId = Insight & { _id: ObjectId }

@@ -5,6 +5,7 @@ export default function Home() {
         <div className="flex flex-col items-center justify-center gap-4 p-4">
             <Link href="/create/user">Criar usuário</Link>
             <Link href="/list/user">Listar usuários</Link>
+            <Link href="/create/insight">Criar insight</Link>
         </div>
     )
 }
