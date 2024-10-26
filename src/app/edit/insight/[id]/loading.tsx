@@ -1,5 +1,5 @@
 import Loading from "@/components/loading";
 
-export default function LoadingRoot() {
+export default function LoadingInsight() {
     return <Loading />
 }

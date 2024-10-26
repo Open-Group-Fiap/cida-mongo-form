@@ -1,3 +1,4 @@
+import Loading from '@/components/loading'
 import Link from 'next/link'
 
 export default function Home() {
