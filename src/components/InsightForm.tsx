@@ -1,16 +1,22 @@
 'use client'
 
+import { createInsightAction, editInsightAction } from '@/server/actions'
 import { InsightWithId, UserWithId } from '@/utils/types'
+import { useRouter } from 'next/navigation'
 import { Suspense, useMemo, useState } from 'react'
 
 export default function InsightForm({
-    users,
+    children,
     insight,
 }: {
-    users: UserWithId[]
+    children: React.ReactNode
     insight?: InsightWithId
 }) {
-    const [arquivosCount, setArquivosCount] = useState(1)
+    const files = insight?.arquivos ?? []
+    const [arquivosCount, setArquivosCount] = useState(
+        files.length === 0 ? 1 : files.length
+    )
+    const router = useRouter()
     const rangeCount = useMemo(
         () => Array.from({ length: arquivosCount }, (_, i) => i),
         [arquivosCount]
@@ -24,19 +30,20 @@ export default function InsightForm({
                 onSubmit={async (e) => {
                     e.preventDefault()
                     const form = new FormData(e.target as HTMLFormElement)
-                    /*try {
+                    try {
                         insight
                             ? await editInsightAction(
-                                insight._id.toString(),
-                                form
-                            )
+                                  insight._id.toString(),
+                                  form
+                              )
                             : await createInsightAction(form)
-                        alert('Insight criada com sucesso!')
+                        router.push('/list/insight')
+                        router.refresh()
                     } catch (error) {
                         if (error instanceof Error) {
                             alert(error.message)
                         }
-                        }*/
+                    }
                 }}
                 className="grid w-full grid-cols-2 items-center justify-center gap-6 rounded-lg border-2 border-gray-200 p-4"
             >
@@ -58,21 +65,10 @@ export default function InsightForm({
                     defaultValue={insight?.resumo.descricao}
                     placeholder="Resumo"
                 />
-                <label htmlFor="user_id">Usuário: </label>
-                <select
-                    className="rounded-md border border-black p-2"
-                    name="user_id"
-                    id="user_id"
-                >
-                    {users.map((user) => {
-                        const id = user._id.toString()
-                        return (
-                            <option key={id} value={id}>
-                                {user.nome}
-                            </option>
-                        )
-                    })}
-                </select>
+                <label htmlFor="user">Usuário: </label>
+                <Suspense fallback={<div>Carregando...</div>}>
+                    {children}
+                </Suspense>
                 <label htmlFor="num_arquivos">Numero de arquivos: </label>
                 <input
                     className="rounded-md border border-black p-2"
@@ -90,35 +86,38 @@ export default function InsightForm({
                             key={i}
                             className="flex w-full flex-col items-center justify-center gap-4 p-4"
                         >
-                            <label htmlFor="arquivo_nome">
+                            <label htmlFor={`arquivo_nome_${i}`}>
                                 Nome do arquivo:{' '}
                             </label>
                             <input
                                 className="rounded-md border border-black p-2"
                                 type="text"
-                                name="arquivo_nome"
-                                id="arquivo_nome"
+                                name={`arquivo_nome_${i}`}
+                                id={`arquivo_nome_${i}`}
+                                defaultValue={files[i]?.nome}
                                 placeholder="Nome do arquivo"
                             />
 
-                            <label htmlFor="arquivo_tamanho">
+                            <label htmlFor={`arquivo_tamanho_${i}`}>
                                 Tamanho do arquivo:{' '}
                             </label>
                             <input
                                 className="rounded-md border border-black p-2"
                                 type="number"
-                                name="arquivo_tamanho"
-                                id="arquivo_tamanho"
+                                name={`arquivo_tamanho_${i}`}
+                                id={`arquivo_tamanho_${i}`}
+                                defaultValue={files[i]?.tamanho}
                                 placeholder="Tamanho do arquivo"
                             />
-                            <label htmlFor="arquivo_url">
+                            <label htmlFor={`arquivo_url_${i}`}>
                                 URL do arquivo:{' '}
                             </label>
                             <input
                                 className="rounded-md border border-black p-2"
                                 type="text"
-                                name="arquivo_url"
-                                id="arquivo_url"
+                                name={`arquivo_url_${i}`}
+                                id={`arquivo_url_${i}`}
+                                defaultValue={files[i]?.url}
                                 placeholder="URL do arquivo"
                             />
                         </div>

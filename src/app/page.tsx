@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from 'next/link'
 
 export default function Home() {
     return (
@@ -6,6 +6,7 @@ export default function Home() {
             <Link href="/create/user">Criar usuário</Link>
             <Link href="/list/user">Listar usuários</Link>
             <Link href="/create/insight">Criar insight</Link>
+            <Link href="/list/insight">Listar insights</Link>
         </div>
     )
 }

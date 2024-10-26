@@ -2,9 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: roboto, sans-serif;
+    color: var(--foreground);
+    background: var(--background);
+    font-family: roboto, sans-serif;
 }

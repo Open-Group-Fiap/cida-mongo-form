@@ -16,17 +16,17 @@ export default function RootLayout({
         <html lang="en">
             <body className={`antialiased`}>
                 <main className="flex flex-col items-center justify-center gap-4 p-4">
-                    <div className="flex flex-row w-full justify-between">
-                            <Link className="float-left" href="/">
-                                <img
-                                    src="/favicon.ico"
-                                    alt="Logo"
-                                    className="h-12 w-auto"
-                                />
-                            </Link>
-                            <h1 className="w-full text-6xl font-bold text-center">
-                                Cida - Conexão MongoDB
-                            </h1>
+                    <div className="flex w-full flex-row justify-between">
+                        <Link className="float-left" href="/">
+                            <img
+                                src="/favicon.ico"
+                                alt="Logo"
+                                className="h-12 w-auto"
+                            />
+                        </Link>
+                        <h1 className="w-full text-center text-6xl font-bold">
+                            Cida - Conexão MongoDB
+                        </h1>
                     </div>
                     {children}
                 </main>

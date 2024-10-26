@@ -1,6 +1,6 @@
 import DeleteUserButton from '@/components/DeleteUserButton'
 import db from '@/server/db'
-import {  UserWithId } from '@/utils/types'
+import { UserWithId } from '@/utils/types'
 import Link from 'next/link'
 
 export default async function Page() {
@@ -62,10 +62,11 @@ export default async function Page() {
                             </td>
                             <td className="border-b px-4 py-2">
                                 <span
-                                    className={`rounded px-2 py-1 text-xs font-bold ${user.status === 'ativo'
+                                    className={`rounded px-2 py-1 text-xs font-bold ${
+                                        user.status === 'ativo'
                                             ? 'text-green-500'
                                             : 'text-red-700'
-                                        }`}
+                                    }`}
                                 >
                                     {user.status[0].toUpperCase() +
                                         user.status.slice(1)}
