@@ -20,4 +20,8 @@ pnpm run dev
 
 Abra [http://localhost:3000](http://localhost:3000) para ver o aplicativo em execução.
 
-
+## Grupo:
+- Cauã Alencar Rojas Romero - RM98638
+- Jaci Teixeira Santos - RM99627
+- Leonardo dos Santos Guerra - RM99738
+- Maria Eduarda Ferreira da Mata - RM99004
