@@ -50,6 +50,7 @@ O caso de uso da CIDA exige:
 #### 1. Estrutura Principal
 
 ##### User Collection
+Total de atributos: 9
 ```javascript
 {
     nome: String,
@@ -66,6 +67,7 @@ O caso de uso da CIDA exige:
 ```
 
 ##### Insight Collection
+Total de atributos: 12
 ```javascript
 {
     usuario: ObjectId,
